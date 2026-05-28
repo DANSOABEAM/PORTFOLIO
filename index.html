@@ -1,0 +1,605 @@
+# Professional Company Portfolio Website
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francid Danso | Professional Web Developer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Montserrat',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#08111f;
+color:white;
+overflow-x:hidden;
+}
+
+body::before{
+content:'';
+position:fixed;
+width:600px;
+height:600px;
+background:#0066ff;
+filter:blur(220px);
+top:-250px;
+left:-250px;
+opacity:0.25;
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:600px;
+height:600px;
+background:#00d9ff;
+filter:blur(220px);
+bottom:-250px;
+right:-250px;
+opacity:0.25;
+z-index:-1;
+}
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:22px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(8,17,31,0.7);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:1000;
+}
+
+.logo{
+font-size:2rem;
+font-weight:800;
+background:linear-gradient(to right,#00d9ff,#0066ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:35px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:0.4s;
+}
+
+nav ul li a:hover{
+color:#00d9ff;
+}
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+align-items:center;
+gap:60px;
+padding:130px 8% 80px;
+}
+
+.hero-text h3{
+color:#00d9ff;
+font-size:1.2rem;
+letter-spacing:3px;
+margin-bottom:20px;
+}
+
+.hero-text h1{
+font-size:5rem;
+line-height:1.1;
+margin-bottom:25px;
+font-weight:800;
+}
+
+.hero-text h1 span{
+background:linear-gradient(to right,#00d9ff,#0066ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+color:#cfcfcf;
+line-height:1.9;
+font-size:1.05rem;
+margin-bottom:35px;
+max-width:650px;
+}
+
+.btns{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 34px;
+border-radius:50px;
+text-decoration:none;
+font-weight:600;
+transition:0.5s;
+display:inline-block;
+}
+
+.primary{
+background:linear-gradient(to right,#00d9ff,#0066ff);
+color:white;
+box-shadow:0 0 25px rgba(0,217,255,0.35);
+}
+
+.primary:hover{
+transform:translateY(-6px) scale(1.05);
+}
+
+.secondary{
+border:2px solid #00d9ff;
+color:#00d9ff;
+}
+
+.secondary:hover{
+background:#00d9ff;
+color:#08111f;
+transform:translateY(-6px);
+}
+
+.hero-image{
+position:relative;
+text-align:center;
+}
+
+.hero-image img{
+width:100%;
+max-width:450px;
+border-radius:35px;
+box-shadow:0 0 45px rgba(0,217,255,0.25);
+animation:float 4s ease-in-out infinite;
+height: 50%;
+margin-bottom: 20%;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);} 
+50%{transform:translateY(-18px);} 
+100%{transform:translateY(0px);} 
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+padding:0 8% 80px;
+}
+
+.stat-box{
+background:rgba(255,255,255,0.05);
+padding:35px;
+text-align:center;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.5s;
+}
+
+.stat-box:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px rgba(0,217,255,0.2);
+}
+
+.stat-box h2{
+font-size:3rem;
+margin-bottom:10px;
+color:#00d9ff;
+}
+
+section{
+padding:100px 8%;
+}
+
+.title{
+text-align:center;
+font-size:3.5rem;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.title span{
+background:linear-gradient(to right,#00d9ff,#0066ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+text-align:center;
+max-width:750px;
+margin:auto auto 70px;
+line-height:1.9;
+color:#c7c7c7;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.service-card{
+background:rgba(255,255,255,0.05);
+padding:40px 30px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.5s;
+text-align:center;
+}
+
+.service-card:hover{
+transform:translateY(-15px);
+box-shadow:0 0 35px rgba(0,217,255,0.25);
+}
+
+.service-card i{
+font-size:3rem;
+margin-bottom:20px;
+color:#00d9ff;
+}
+
+.service-card h3{
+font-size:1.5rem;
+margin-bottom:15px;
+}
+
+.service-card p{
+line-height:1.8;
+color:#c8c8c8;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+.project-card{
+background:rgba(255,255,255,0.05);
+border-radius:30px;
+overflow:hidden;
+transition:0.5s;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.project-card:hover{
+transform:translateY(-12px);
+box-shadow:0 0 35px rgba(0,217,255,0.25);
+}
+
+.project-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.project-content{
+padding:30px;
+}
+
+.project-content h3{
+font-size:1.6rem;
+margin-bottom:15px;
+}
+
+.project-content p{
+line-height:1.8;
+color:#c8c8c8;
+margin-bottom:25px;
+}
+
+.contact-container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+align-items:center;
+}
+
+.contact-box{
+background:rgba(255,255,255,0.05);
+padding:40px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.contact-box h2{
+font-size:2.5rem;
+margin-bottom:20px;
+}
+
+.contact-box p{
+line-height:1.9;
+color:#c7c7c7;
+margin-bottom:30px;
+}
+
+.socials{
+display:flex;
+gap:18px;
+}
+
+.socials a{
+width:55px;
+height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,0.08);
+text-decoration:none;
+color:white;
+font-size:1.2rem;
+transition:0.5s;
+}
+
+.socials a:hover{
+background:linear-gradient(to right,#00d9ff,#0066ff);
+transform:translateY(-8px) rotate(360deg);
+}
+
+form input,
+form textarea{
+width:100%;
+padding:16px;
+margin-bottom:20px;
+background:rgba(255,255,255,0.08);
+border:none;
+outline:none;
+border-radius:18px;
+color:white;
+}
+
+form textarea{
+height:160px;
+resize:none;
+}
+
+footer{
+padding:35px;
+text-align:center;
+color:#c0c0c0;
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+@media(max-width:991px){
+.hero{
+text-align:center;
+}
+
+.hero-text h1{
+font-size:3.5rem;
+}
+
+.btns{
+justify-content:center;
+}
+
+nav ul{
+display:none;
+}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">FRANCID.</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+<h3>PROFESSIONAL COMPANY WEBSITE DEVELOPER</h3>
+
+<h1>I Build Modern <span>Business Websites</span></h1>
+
+<p>
+I help companies, startups, organizations and businesses create professional, modern and responsive websites that attract customers, increase trust and grow their brands online. I specialize in company websites, portfolio websites, dashboards, inventory systems and custom web applications.
+</p>
+
+<div class="btns">
+<a href="#projects" class="btn primary">View My Projects</a>
+<a href="#contact" class="btn secondary">Hire Me</a>
+</div>
+</div>
+
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1200&auto=format&fit=crop" alt="Developer Image">
+</div>
+
+</section>
+
+<div class="stats">
+<div class="stat-box">
+<h2>50+</h2>
+<p>Professional Websites</p>
+</div>
+
+<div class="stat-box">
+<h2>100%</h2>
+<p>Responsive Designs</p>
+</div>
+
+<div class="stat-box">
+<h2>24/7</h2>
+<p>Client Support</p>
+</div>
+</div>
+
+<section id="services">
+<h1 class="title">Professional <span>Services</span></h1>
+
+<p class="subtitle">
+I create modern websites and systems for companies and businesses with beautiful user interfaces, responsive layouts and advanced functionality.
+</p>
+
+<div class="services">
+
+<div class="service-card">
+<i class="fa-solid fa-building"></i>
+<h3>Company Websites</h3>
+<p>Professional business websites that help companies build trust and attract customers online.</p>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-laptop-code"></i>
+<h3>Custom Web Applications</h3>
+<p>Inventory systems, dashboards, management systems and custom business solutions.</p>
+</div>
+
+<div class="service-card">
+<i class="fa-solid fa-mobile-screen"></i>
+<h3>Responsive Design</h3>
+<p>Beautiful websites that work perfectly on mobile phones, tablets and desktop devices.</p>
+</div>
+
+</div>
+</section>
+
+<section id="projects">
+<h1 class="title">Featured <span>Projects</span></h1>
+
+<p class="subtitle">
+Some professional websites and systems I have designed for businesses and organizations.
+</p>
+
+<div class="projects">
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" alt="Business Website">
+
+<div class="project-content">
+<h3>Corporate Business Website</h3>
+<p>Modern professional website designed for a growing company with beautiful UI and responsive layout.</p>
+
+<a href="https://example.com" target="_blank" class="btn primary">Visit Website</a>
+</div>
+</div>
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Inventory System">
+
+<div class="project-content">
+<h3>Smart Inventory System</h3>
+<p>Advanced inventory and sales management system for businesses with dashboard and POS features.</p>
+
+<a href="https://example.com" target="_blank" class="btn primary">View Project</a>
+</div>
+</div>
+
+<div class="project-card">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop" alt="Portfolio Website">
+
+<div class="project-content">
+<h3>Professional Portfolio Website</h3>
+<p>Luxury portfolio website with animations and modern responsive interface for professionals.</p>
+
+<a href="https://example.com" target="_blank" class="btn primary">Open Website</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="contact">
+<h1 class="title">Contact <span>Me</span></h1>
+
+<p class="subtitle">
+Need a professional website for your company or business? Let’s work together.
+</p>
+
+<div class="contact-container">
+
+<div class="contact-box">
+<h2>Let's Build Your Business Website</h2>
+
+<p>
+I create beautiful company websites, professional business platforms and modern web systems that help businesses grow online.
+</p>
+
+<div class="socials">
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-linkedin-in"></i></a>
+<a href="#"><i class="fab fa-github"></i></a>
+</div>
+</div>
+
+<div class="contact-box">
+<form onsubmit="sendMessage(event)">
+<input type="text" placeholder="Your Name" required>
+<input type="email" placeholder="Your Email" required>
+<textarea placeholder="Tell me about your project" required></textarea>
+<button type="submit" class="btn primary" style="border:none; width:100%;">Send Message</button>
+</form>
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Francid Danso • Professional Website Developer
+</footer>
+
+<script>
+function sendMessage(e){
+e.preventDefault();
+alert('Your message has been sent successfully!');
+document.querySelector('form').reset();
+}
+
+const elements = document.querySelectorAll('.service-card,.project-card,.stat-box,section');
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.style.opacity='1';
+entry.target.style.transform='translateY(0px)';
+}
+});
+},{threshold:0.2});
+
+elements.forEach(el=>{
+el.style.opacity='0';
+el.style.transform='translateY(70px)';
+el.style.transition='1s';
+observer.observe(el);
+});
+</script>
+
+</body>
+</html>
+```
